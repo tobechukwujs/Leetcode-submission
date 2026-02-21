@@ -1,18 +1,14 @@
 class Solution(object):
     def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        stack =[]
-        mapping = {")" : "(", "]" : "[", "}" : "{"}
-
-        for c in s:
-            if c in mapping:
-                if stack and stack[-1] == mapping[c]:
+        pair = { ')': '(',  ']': '[',  '}': '{' }
+        stack = []  
+        
+        for char in s:
+            if char in pair:
+                if stack and stack[-1] == pair[char]:
                     stack.pop()
                 else:
                     return False
             else:
-                stack.append(c)
-        return True if not stack else False            
+                stack.append(char)            
+        return True if not stack else False    
