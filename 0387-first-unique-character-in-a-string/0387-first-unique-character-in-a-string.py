@@ -1,9 +1,17 @@
-class Solution(object):
-    def firstUniqChar(self, s):
-        count = defaultdict(int)
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        letters = {}
+
         for char in s:
-            count[char] +=1
-        for i, char in enumerate(s):
-            if count[char] == 1:
-               return i
-        return -1    
+    #look through every letter and then increase count, if the letter has been seen before
+            if char in letters:
+                letters[char] +=1
+
+            else:
+                letters[char] =1
+        for i in range(len(s)): 
+            if letters[s[i]]== 1:
+                return i  
+
+        return -1         
+      
