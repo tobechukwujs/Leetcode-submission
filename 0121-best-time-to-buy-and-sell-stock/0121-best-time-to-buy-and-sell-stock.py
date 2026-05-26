@@ -1,11 +1,13 @@
-class Solution(object):
-    def maxProfit(self, prices):
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        left, right = 0, 1
         maxProfit = 0
-        minPrice = float("inf")
-        for price in prices:
-            if price < minPrice:
-                minPrice = price
+        while right < len(prices):
+            #profit
+            if prices[left] < prices[right]:
+                profit = prices[right] - prices[left]
+                maxProfit = max(maxProfit, profit)      
             else:
-                maxProfit = max(maxProfit, price - minPrice)
-        return maxProfit        
-        
+                left = right
+            right +=1
+        return maxProfit     
